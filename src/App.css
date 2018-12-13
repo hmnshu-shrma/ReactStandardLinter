@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.AppContainer{
+  display: flex;
+  flex-direction: row;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
