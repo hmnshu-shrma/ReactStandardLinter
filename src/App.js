@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import Sidebar from './Components/Sidebar';
-import Maincontainer from './Components/Maincontainer';
+import Maincontainer from './Components/Maincontainer'
+import RssForm from './Components/Forms';
 import './App.css';
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      rssJson:null
+    };
+  }
+
+  onDataReturn(jsonData){
+    this.setState({
+      rssJson:jsonData
+    });
+  }
   render() {
     return (
       <div className="AppContainer">
-      <Sidebar />
-      <Maincontainer />
+      <RssForm jsonData = {this.onDataReturn.bind(this)}/>
+      <Maincontainer rssJson={this.state.rssJson} />
       </div>
     );
   }
