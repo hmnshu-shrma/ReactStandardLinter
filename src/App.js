@@ -9,7 +9,6 @@ class App extends Component {
       rssJson:null
     };
   }
-
   onDataReturn(jsonData){
     this.setState({
       rssJson:jsonData
@@ -18,8 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="AppContainer">
-      <RssForm jsonData = {this.onDataReturn.bind(this)}/>
-      <Maincontainer rssJson={this.state.rssJson} />
+        <RssForm jsonData = {this.onDataReturn.bind(this)}/>
+        <Maincontainer rssJson={this.state.rssJson} />
       </div>
     );
   }

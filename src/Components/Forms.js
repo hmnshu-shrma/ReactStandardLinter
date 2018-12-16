@@ -15,9 +15,10 @@ class RssForm extends Component {
 
   handleSubmit(e) {
     // alert('The value is: ' + this.input.value);
+    let url = this.input.value;
     e.preventDefault();
     console.log('this  came');
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://api.rss2json.com/v1/api.json?rss_url='+ encodeURIComponent(url))
     .then(res => res.json())
     .then((result)=>{
       this.setState({
@@ -45,12 +46,12 @@ render() {
 
   return (
     <div className='sidebar__nav'>
-    <form onSubmit={this.handleSubmit}>
-    <label>
-    <input type="text" placeholder="Rss link" ref={(input) => this.input = input} />
-    </label>
-    <input type="submit" value="Submit" />
-    </form>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          <input type="text" placeholder="Rss link" ref={(input) => this.input = input} />
+        </label>
+      <input type="submit" value="Submit" />
+      </form>
     </div>
   );
 }
