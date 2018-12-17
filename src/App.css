@@ -17,6 +17,12 @@ input[type="text"] {
     padding: 4px;
     border-radius: 2px;
 }
+.truncate {
+  width: 16vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .App {
   text-align: center;
