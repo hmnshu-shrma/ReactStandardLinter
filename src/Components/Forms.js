@@ -54,8 +54,11 @@ class RssForm extends Component {
         });
         const serializedState = JSON.stringify(this.state.urlList);
         localStorage.setItem('state', serializedState);
+        this.input.value = "";
+        this.input.focus();
       }
       this.sendData(this.state.data);
+
     },(error)=>{
       this.setState({
         isLoaded:true,
