@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import '../styles/sidebar.css';
+import '../styles/forms.css';
 import LinkslistContainer from './Linkslist';
+import search from '../search.svg';
 
 class RssForm extends Component {
   constructor(props) {
@@ -11,14 +13,18 @@ class RssForm extends Component {
       isLoaded:false,
       items:[],
       data:'',
-      urlList:[]
+      urlList:[],
+      userError:null
     }
   }
   componentDidMount() {
+
     let UserStateHistory = localStorage.getItem('state');
     console.log(this.props,"props")
+    this.input.focus();
     if(this.state.urlList.length === 0 ){
       // console.log(JSON.parse(UserStateHistory),"local storage");
+
       this.setState({
         urlList:this.state.urlList.concat(JSON.parse(UserStateHistory))
       });
@@ -33,17 +39,23 @@ class RssForm extends Component {
     fetch('https://api.rss2json.com/v1/api.json?rss_url='+ encodeURIComponent(argsurl))
     .then(res => res.json())
     .then((result)=>{
-      this.setState({
-        isLoaded:true,
-        data:result,
-        urlList:[...this.state.urlList,argsurl]
-      });
-      if(this.state.urlList){
+      if(this.isInArray(this.state.urlList, argsurl) ){
+        console.log('present')
+        this.setState({
+          isLoaded:true,
+          data:result
+        });
+      }else {
+        console.log('not present')
+        this.setState({
+          isLoaded:true,
+          data:result,
+          urlList:[...this.state.urlList,argsurl]
+        });
         const serializedState = JSON.stringify(this.state.urlList);
         localStorage.setItem('state', serializedState);
       }
       this.sendData(this.state.data);
-
     },(error)=>{
       this.setState({
         isLoaded:true,
@@ -55,17 +67,28 @@ class RssForm extends Component {
 
 handleSubmit(e) {
   let url = this.input.value;
+  let urlPattern = /^(https?|ftp|torrent|image|irc):\/\/(-\.)?([^\s\/?\.#-]+\.?)+(\/[^\s]*)?$/i;
   e.preventDefault();
-  var RepeatedUrl = this.state.urlList.filter(function(listItem) {
-    if(listItem === url){
-      return false
+  if (url!=="") {
+    if(!url.match(urlPattern)){
+      this.setState({
+        userError:'Enter a valid url'
+      });
+      this.input.value = "";
+      this.input.focus();
     }else{
-      return true;
+      this.setState({
+        userError:''
+      });
+      this.handleHttpCalls(url);
     }
-  });
-  RepeatedUrl ? console.log('present', url):console.log('not present', url)
+  }else{
+    this.setState({
+      userError:'Url Cannot be empty'
+    });
 
-  this.handleHttpCalls(url);
+    this.input.focus();
+  }
 }
 
 
@@ -85,16 +108,26 @@ sendData(args){
   this.props.jsonData(args);
 }
 
+isInArray(array, search)
+{
+  return array.indexOf(search) >= 0;
+}
+
 render() {
   // let RssUrl = this.state;
+  let errorInput = this.state.userError;
+
   return (
     <div className='sidebar__nav'>
-      <form onSubmit={this.handleSubmit} className="rssform">
-        <label>
-          <input type="text" placeholder="Rss link" ref={(input) => this.input = input} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="form__container" >
+        <form onSubmit={this.handleSubmit} className="rssform">
+          <input type="text"  placeholder="Rss link" className="searchTerm" ref={(input) => this.input = input} />
+          <input type="image" width="50" alt="submit" height="50" src={search} className="searchButtonIcon" />
+        </form>
+
+        <span className="error"> { errorInput ? errorInput:''} </span>
+      </div>
+
       <LinkslistContainer
         linksData={this.state.urlList}
         handleDelete={this.handleDelete.bind(this)}

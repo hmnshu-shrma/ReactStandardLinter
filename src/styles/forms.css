@@ -1,0 +1,94 @@
+
+.urlLinks__container--card {
+  position: relative;
+  display: block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #2E2D34;
+  background: #ECECEC;
+  -webkit-transition: .4s;
+  transition: .4s;
+  margin-bottom: 15px;
+  width: 90%;
+  word-break: break-all;
+  margin: 15px auto 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.07);
+}
+.title{
+  font-size: 13px;
+  margin-left: 0px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px;
+  padding: 13px 0px;
+
+}
+.urlLinks__container--card:hover {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.33);
+  background: #2E2D34;
+  color: white;
+}
+
+.searchButtonIcon {
+  height: 20px;
+  background: #fff;
+  padding: 5px;
+  vertical-align: middle;
+  width: auto;
+  display: inline-block;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+form.rssform{
+  border-radius: 3px;
+  padding: 2px;
+}
+.searchButton {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.error {
+  color: #e80000;
+  font-size: 13px;
+  text-align: center;
+  display: inherit;
+}
+.form__container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  width: 80%;
+  border: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 0px;
+  outline: none;
+  color: #282c34;
+  display: inline-block;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.searchTerm:focus {
+    color: #424147;
+    font-weight: 600;
+}

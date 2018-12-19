@@ -1,0 +1,60 @@
+/* cadet screens */
+@media only screen
+and (min-device-width: 1025px)
+and (max-device-width: 1365px){
+  .searchTerm {
+    width: 78%;
+  }
+}
+
+
+/* ipad */
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px) {
+  .searchTerm {
+    width: 75%;
+  }
+  .sidebar__nav {
+    width: 38vw;
+  }
+  .urlLinks__container--card{
+    width: 84%;
+  }
+}
+/* ipad ends */
+/* mobiles */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 767px){
+  .AppContainer {
+    display: flex;
+    flex-direction: row;
+    display: block;
+  }
+  .sidebar__nav {
+    background: #e0e0e0;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+  }
+  .urlLinks__container {
+    max-height: 30vh;
+    overflow-y: auto;
+  }
+  .rss__container{
+    padding: 0px 15px;
+  }
+  .main__container {
+    background: #f6f6f6;
+    width: initial;
+    height:auto;
+    overflow-y: auto;
+  }
+  .truncate {
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

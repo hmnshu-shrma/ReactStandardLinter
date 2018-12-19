@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 body::-webkit-scrollbar {
     width: 5px;;
 }
@@ -12,13 +13,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-input[type="text"] {
-    border: 0px;
-    padding: 4px;
-    border-radius: 2px;
+body{
+  background: #f6f6f6;
+  font-family: 'Open Sans', sans-serif;
 }
+
 .truncate {
-  width: 16vw;
+  width: 14vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate--lg{
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

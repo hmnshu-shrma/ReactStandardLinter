@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Maincontainer from './Components/Maincontainer'
 import RssForm from './Components/Forms';
 import './App.css';
+import './styles/media.css';
 class App extends Component {
   constructor(){
     super();
@@ -20,6 +21,7 @@ class App extends Component {
         <RssForm jsonData = {this.onDataReturn.bind(this)}/>
         <Maincontainer rssJson={this.state.rssJson} />
       </div>
+
     );
   }
 }

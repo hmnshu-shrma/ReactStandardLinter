@@ -9,19 +9,23 @@ class Maincontainer extends Component {
     }
     return(
       <div className='main__container'>
-      <h1 className="container__heading"> { jsonRssData ? jsonRssData.feed.url: "Hello there "}</h1>
-      {jsonRssData ? jsonRssData.items.map((item)=>
-        <div className="container__cards">
-        <p className="container__cards--title">
-        {item.title}
-        </p>
-        <p dangerouslySetInnerHTML={{__html : item.description}}></p>
-        </div>)
-        :
-        " Nothing Found"}
-        </div>
-      );
-    }
-  }
+        <h1 className="container__heading truncate--lg" title={ jsonRssData ? jsonRssData.feed.url: "Hello. I'm Arthur!"}> { jsonRssData ? jsonRssData.feed.url: "Hello. I'm Arthur!"}</h1>
+        <div className="rss__container">
+          {jsonRssData ? jsonRssData.items.map((item)=>
+            <div className="container__cards">
+              <p className="container__cards--title">
+                {item.title}
+              </p>
+              <p dangerouslySetInnerHTML={{__html : item.description}}></p>
+            </div>)
+            : <p className="default__text">
+            I make rss provide you readable Rss Feed of blogs.
+          </p>
+        }
+      </div>
+    </div>
+  );
+}
+}
 
-  export default Maincontainer;
+export default Maincontainer;
