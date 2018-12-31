@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Maincontainer from './Components/Maincontainer'
 import RssForm from './Components/Forms';
-import './App.css';
+import './App.scss';
 import './styles/media.css';
 class App extends Component {
   constructor(){
