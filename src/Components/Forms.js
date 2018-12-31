@@ -18,14 +18,18 @@ class RssForm extends Component {
     }
   }
   componentDidMount() {
-
     let UserStateHistory = localStorage.getItem('state');
+    console.log(localStorage.getItem('state'))
     console.log(this.props,"props")
     this.input.focus();
     if(this.state.urlList.length === 0 ){
       console.log(JSON.parse(UserStateHistory),"local storage");
       var history = JSON.parse(UserStateHistory);
-      this.setState({urlList:[...this.state.urlList,history]});
+      if(history === '' && history !== null ){
+        if(history.length !== 0  ){
+          this.setState({urlList:[...this.state.urlList,history]});
+        }
+      }
     }
   }
 
