@@ -23,11 +23,9 @@ class RssForm extends Component {
     console.log(this.props,"props")
     this.input.focus();
     if(this.state.urlList.length === 0 ){
-      // console.log(JSON.parse(UserStateHistory),"local storage");
-
-      this.setState({
-        urlList:this.state.urlList.concat(JSON.parse(UserStateHistory))
-      });
+      console.log(JSON.parse(UserStateHistory),"local storage");
+      var history = JSON.parse(UserStateHistory);
+      this.setState({urlList:[...this.state.urlList,history]});
     }
   }
 
