@@ -6,10 +6,7 @@ class LinkslistContainer extends Component {
     let jsonRssData;
     if(this.props.linksData){
       jsonRssData = this.props.linksData;
-      console.log(jsonRssData)
     }
-
-
     return(
       <div>
         <div className="urlLinks__container">

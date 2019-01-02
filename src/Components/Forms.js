@@ -19,55 +19,50 @@ class RssForm extends Component {
   }
   componentDidMount() {
     let UserStateHistory = localStorage.getItem('state');
-    console.log(localStorage.getItem('state'))
     console.log(this.props,"props")
-    this.input.focus();
     if(this.state.urlList.length === 0 ){
-      console.log(JSON.parse(UserStateHistory),"local storage");
-      var history = JSON.parse(UserStateHistory);
-      if(history === '' && history !== null ){
-        if(history.length !== 0  ){
-          this.setState({urlList:[...this.state.urlList,history]});
-        }
-      }
-    }
-  }
-
-  handleFeed(args){
-    this.handleHttpCalls(args);
-  }
-
-  handleHttpCalls(argsurl){
-    fetch('https://api.rss2json.com/v1/api.json?rss_url='+ encodeURIComponent(argsurl))
-    .then(res => res.json())
-    .then((result)=>{
-      if(this.isInArray(this.state.urlList, argsurl) ){
-        console.log('present')
-        this.setState({
-          isLoaded:true,
-          data:result
-        });
-      }else {
-        console.log('not present')
-        this.setState({
-          isLoaded:true,
-          data:result,
-          urlList:[...this.state.urlList,argsurl]
-        });
-        const serializedState = JSON.stringify(this.state.urlList);
-        localStorage.setItem('state', serializedState);
-        this.input.value = "";
-        this.input.focus();
-      }
-      this.sendData(this.state.data);
-
-    },(error)=>{
+      // console.log(JSON.parse(UserStateHistory),"local storage");
       this.setState({
-        isLoaded:true,
-        error
+        urlList:this.state.urlList.concat(JSON.parse(UserStateHistory))
       });
     }
-  )
+  }
+
+handleFeed(args){
+  this.handleHttpCalls(args);
+}
+
+handleHttpCalls(argsurl){
+  fetch('https://api.rss2json.com/v1/api.json?rss_url='+ encodeURIComponent(argsurl))
+  .then(res => res.json())
+  .then((result)=>{
+    if(this.isInArray(this.state.urlList, argsurl) ){
+      console.log('present')
+      this.setState({
+        isLoaded:true,
+        data:result
+      });
+    }else {
+      console.log('not present')
+      this.setState({
+        isLoaded:true,
+        data:result,
+        urlList:[...this.state.urlList,argsurl]
+      });
+      const serializedState = JSON.stringify(this.state.urlList);
+      localStorage.setItem('state', serializedState);
+      this.input.value = "";
+      this.input.focus();
+    }
+    this.sendData(this.state.data);
+
+  },(error)=>{
+    this.setState({
+      isLoaded:true,
+      error
+    });
+  }
+)
 }
 
 handleSubmit(e) {
@@ -121,7 +116,6 @@ isInArray(array, search)
 render() {
   // let RssUrl = this.state;
   let errorInput = this.state.userError;
-
   return (
     <div className='sidebar__nav'>
       <div className="form__container" >
