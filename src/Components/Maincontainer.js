@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/maincontainer.css';
 class Maincontainer extends Component {
   render(){
     let jsonRssData;

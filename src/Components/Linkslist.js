@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/maincontainer.css';
 
 class LinkslistContainer extends Component {
   render(){

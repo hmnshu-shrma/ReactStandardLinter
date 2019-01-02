@@ -1,21 +1,27 @@
-
-.urlLinks__container--card {
-  position: relative;
-  display: block;
-  font-weight: bold;
-  padding: 0.25em 0.5em;
-  text-decoration: none;
-  color: #2E2D34;
-  background: #ECECEC;
-  -webkit-transition: .4s;
-  transition: .4s;
-  margin-bottom: 15px;
-  width: 90%;
-  word-break: break-all;
-  margin: 15px auto 15px;
-  cursor: pointer;
-  border-radius: 3px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.07);
+.urlLinks__container{
+  &--card {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #2E2D34;
+    background: #ECECEC;
+    -webkit-transition: .4s;
+    transition: .4s;
+    margin-bottom: 15px;
+    width: 90%;
+    word-break: break-all;
+    margin: 15px auto 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.07);
+    &:hover {
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.33);
+      background: #2E2D34;
+      color: white;
+    }
+  }
 }
 .title{
   font-size: 13px;
@@ -26,12 +32,6 @@
   padding: 13px 0px;
 
 }
-.urlLinks__container--card:hover {
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.33);
-  background: #2E2D34;
-  color: white;
-}
-
 .searchButtonIcon {
   height: 20px;
   background: #fff;
@@ -59,7 +59,6 @@ form.rssform{
   cursor: pointer;
   font-size: 20px;
 }
-
 .error {
   color: #e80000;
   font-size: 13px;
@@ -75,7 +74,6 @@ form.rssform{
   width: 100%;
   position: relative
 }
-
 .searchTerm {
   width: 80%;
   border: none;
@@ -87,8 +85,8 @@ form.rssform{
   display: inline-block;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-}
-.searchTerm:focus {
-    color: #424147;
-    font-weight: 600;
+  &:focus {
+      color: #424147;
+      font-weight: 600;
+  }
 }
